@@ -1,14 +1,16 @@
 .message {
-  background: rgba(26, 10, 46, 0.4);
-  border: 1px solid #6b21a8;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--accent);
   border-radius: 12px;
   padding: 16px;
-  transition: all 0.3s;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .message:hover {
-  background: rgba(26, 10, 46, 0.6);
-  border-color: #8b5cf6;
+  border-left-color: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .messageHeader {
@@ -19,33 +21,33 @@
 }
 
 .author {
-  color: #a78bfa;
+  color: var(--accent);
   font-weight: 700;
   font-size: 0.95rem;
 }
 
 .stance {
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
 
 .stance.pro {
-  background: rgba(34, 197, 94, 0.2);
-  color: #4ade80;
-  border: 1px solid #16a34a;
+  background: rgba(45, 106, 79, 0.15);
+  color: var(--success);
+  border: 1px solid var(--success);
 }
 
 .stance.con {
-  background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
-  border: 1px solid #dc2626;
+  background: var(--accent-cta-soft);
+  color: var(--accent-cta);
+  border: 1px solid var(--accent-cta);
 }
 
 .timestamp {
-  color: #64748b;
+  color: var(--text-dim);
   font-size: 0.75rem;
   margin-left: auto;
 }
@@ -58,22 +60,22 @@
 }
 
 .charCount.green {
-  color: #4ade80;
-  background: rgba(34, 197, 94, 0.1);
+  color: var(--success);
+  background: rgba(45, 106, 79, 0.1);
 }
 
 .charCount.orange {
-  color: #fb923c;
-  background: rgba(249, 115, 22, 0.1);
+  color: var(--warning);
+  background: rgba(184, 134, 11, 0.1);
 }
 
 .charCount.red {
-  color: #f87171;
-  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-cta);
+  background: var(--accent-cta-soft);
 }
 
 .content {
-  color: #e2e8f0;
+  color: var(--text-primary);
   line-height: 1.6;
   font-size: 0.95rem;
   margin-bottom: 12px;
@@ -96,19 +98,19 @@
 
 .upvote,
 .downvote {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid #6b21a8;
-  color: #a78bfa;
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.85rem;
   cursor: not-allowed;
   transition: all 0.2s;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .score {
-  color: #64748b;
+  color: var(--text-primary);
   font-size: 0.85rem;
   font-weight: 600;
   margin-left: 8px;
@@ -118,11 +120,11 @@
   position: absolute;
   bottom: 100%;
   left: 0;
-  background: rgba(15, 15, 35, 0.95);
-  border: 1px solid #6b21a8;
-  color: #94a3b8;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dark);
+  color: var(--text-on-dark);
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.75rem;
   white-space: nowrap;
   margin-bottom: 8px;

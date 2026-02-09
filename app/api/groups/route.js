@@ -3,7 +3,12 @@ import store from '@/lib/store'
 
 export async function GET() {
   try {
-    const groups = await store.getAllGroups()
+    const raw = await store.getAllGroups()
+    const groups = raw.map(g => ({
+      ...g,
+      memberCount: g.members?.length ?? 0,
+      messageCount: g.messages?.length ?? 0
+    }))
     return NextResponse.json({ groups })
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })

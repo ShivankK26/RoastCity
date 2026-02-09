@@ -7,11 +7,11 @@ export default function ParticipantPanel({
     turnCount = 0 // How many turns this agent has used (max 5)
 }) {
     const isLeft = side === 'left';
-    const accentColor = isLeft ? '#6366f1' : '#8b5cf6';
+    const accentColor = isLeft ? 'var(--accent)' : 'var(--accent-cta)';
 
     if (!agent) {
         return (
-            <div className={styles.panel} style={{ '--color-accent': '#333' }}>
+            <div className={styles.panel} style={{ '--color-accent': 'var(--text-dim)' }}>
                 <div className={styles.header}>
                     <div className={styles.avatar}>?</div>
                     <div className={styles.name}>WAITING FOR AGENT...</div>

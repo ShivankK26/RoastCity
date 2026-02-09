@@ -110,14 +110,17 @@ defaultGroups.forEach(g => {
 
 // ============ AGENT FUNCTIONS ============
 
+function normalizeRole(role) {
+  if (!role) return 'roaster';
+  const r = String(role).toLowerCase();
+  if (r === 'debater') return 'roaster';
+  if (r === 'spectator') return 'judge';
+  return (r === 'judge' ? 'judge' : 'roaster');
+}
+
 function registerAgent({ agentId, name, skillsUrl, endpoint, role, walletAddress }) {
   if (!agentId || !name) {
     throw new Error('Missing required fields: agentId, name');
-  }
-  
-  // Spectators must provide wallet address for token verification
-  if (role === 'spectator' && !walletAddress) {
-    throw new Error('Spectators must provide a wallet address for token verification');
   }
   
   const agent = {
@@ -125,7 +128,7 @@ function registerAgent({ agentId, name, skillsUrl, endpoint, role, walletAddress
     name,
     skillsUrl: skillsUrl || 'none',
     endpoint: endpoint || 'none',
-    role: role || 'debater', // 'debater' or 'spectator'
+    role: normalizeRole(role),
     walletAddress: walletAddress || null,
     registeredAt: new Date().toISOString(),
     groups: ['public'] // Auto-join public group
@@ -234,44 +237,10 @@ function joinGroup(groupId, agentId) {
     throw new Error(`Agent '${agentId}' not found`);
   }
   
-  // Initialize stances object if it doesn't exist
-  if (!group.stances) {
-    group.stances = {};
-  }
+  if (!group.members) group.members = [];
+  if (!group.stances) group.stances = {};
   
-  // Only assign stances to debaters, not spectators
-  if (agent.role === 'debater') {
-    // Count current debaters in this group
-    const currentDebaters = group.members.filter(memberId => {
-      const member = agents.get(memberId);
-      return member && member.role === 'debater';
-    });
-    
-    // Limit to 2 debaters per topic (1 pro, 1 con)
-    if (currentDebaters.length >= 2 && !group.members.includes(agentId)) {
-      throw new Error('This debate already has 2 debaters (1 pro, 1 con). Join as a spectator to vote.');
-    }
-    
-    // Assign stance randomly if not already assigned
-    if (!group.stances[agentId]) {
-      // Check which stances are already taken
-      const takenStances = Object.values(group.stances);
-      const hasPro = takenStances.includes('pro');
-      const hasCon = takenStances.includes('con');
-      
-      if (!hasPro && !hasCon) {
-        // First debater: randomly assign pro or con
-        group.stances[agentId] = Math.random() < 0.5 ? 'pro' : 'con';
-      } else if (!hasPro) {
-        // Second debater: assign pro (con is taken)
-        group.stances[agentId] = 'pro';
-      } else if (!hasCon) {
-        // Second debater: assign con (pro is taken)
-        group.stances[agentId] = 'con';
-      }
-    }
-  }
-  
+  // Open world: any number of roasters/judges per arena
   if (!group.members.includes(agentId)) {
     group.members.push(agentId);
   }
@@ -303,9 +272,9 @@ function postMessage(groupId, agentId, content, replyTo = null) {
     throw new Error(`Agent '${agentId}' not found`);
   }
   
-  // Only debaters can post messages
-  if (agent.role === 'spectator') {
-    throw new Error('Spectators cannot post messages. They can only vote.');
+  // Only roasters can post roasts; judges can only vote
+  if (agent.role === 'judge') {
+    throw new Error('Judges cannot post roasts. They can only vote.');
   }
   
   // Check debate status

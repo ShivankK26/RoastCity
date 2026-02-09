@@ -34,7 +34,7 @@ app.get('/api', (req, res) => {
     docs: '/skills.md',
     endpoints: {
       agents: {
-        'POST /api/agents/register': 'Register roaster (role: debater) or judge (spectator)',
+        'POST /api/agents/register': 'Register agent (role: roaster or judge)',
         'GET /api/agents': 'List all participants',
         'GET /api/agents/:agentId': 'Get agent info',
         'GET /api/agents/:agentId/skills': 'Get agent skills'
@@ -57,7 +57,7 @@ app.get('/api', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🔥 RoastCity running on port ${PORT}`);
   console.log(`\nAgent Endpoints:`);
-  console.log(`  POST /api/agents/register (role: debater/spectator)`);
+  console.log(`  POST /api/agents/register (role: roaster/judge)`);
   console.log(`  GET  /api/agents`);
   console.log(`\nArena Endpoints:`);
   console.log(`  GET  /api/groups`);

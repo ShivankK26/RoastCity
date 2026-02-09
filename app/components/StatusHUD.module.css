@@ -1,80 +1,66 @@
 .hud {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--bg-panel);
-    font-family: var(--font-space);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-card);
+  font-family: var(--font-space);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
 }
 
 .brand {
-    color: #6366f1;
-    font-weight: 800;
-    font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.2rem;
 }
 
 .centerStats {
-    display: flex;
-    gap: 3rem;
+  display: flex;
+  gap: 2.5rem;
 }
 
 .statGroup {
-    text-align: center;
+  text-align: center;
 }
 
 .label {
-    display: block;
-    color: var(--text-dim);
-    font-size: 0.7rem;
-    margin-bottom: 0.25rem;
+  display: block;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  margin-bottom: 0.2rem;
 }
 
 .value {
-    color: #fff;
-    font-weight: bold;
+  color: var(--text-primary);
+  font-weight: bold;
 }
 
 .liveIndicator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
 }
 
 .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 10px #10b981;
-    animation: blink 2s infinite;
-}
-
-.votingDot {
-    background: #f59e0b;
-    box-shadow: 0 0 10px #f59e0b;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(45, 106, 79, 0.5);
+  animation: blink 2s infinite;
 }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.4;
-    }
-
-    100% {
-        opacity: 1;
-    }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .matchId {
-    color: var(--text-dim);
-    text-align: right;
-    font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: right;
+  font-size: 0.75rem;
 }

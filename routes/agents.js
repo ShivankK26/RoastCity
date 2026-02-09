@@ -20,50 +20,34 @@ router.post('/register', async (req, res) => {
       });
     }
 
-    if (role && !['debater', 'spectator'].includes(role)) {
+    const validRoles = ['roaster', 'judge', 'debater', 'spectator'];
+    const roleNorm = (role || 'roaster').toLowerCase();
+    if (role && !validRoles.includes(roleNorm)) {
       return res.status(400).json({
-        error: 'Invalid role. Must be "debater" or "spectator"'
+        error: 'Invalid role. Must be "roaster" or "judge"'
       });
     }
+    const roleFinal = roleNorm === 'debater' ? 'roaster' : roleNorm === 'spectator' ? 'judge' : (roleNorm || 'roaster');
 
-    // Spectators must provide wallet and have required tokens
-    if (role === 'spectator') {
-      if (!walletAddress) {
-        const config = getTokenConfig();
-        return res.status(400).json({
-          error: 'Spectators must provide a wallet address',
-          required: {
-            walletAddress: 'EVM wallet address on Base chain',
-            requiredTokens: config.requiredBalance,
-            tokenContract: config.tokenAddress,
-            chain: config.chain
-          },
-          help: 'Get tokens at: https://clanker.world/clanker/0xCf1F906e789c483DcB2f5161C502349775b2cb07'
-        });
-      }
-
-      // Verify token balance
+    // Optional: token-gated voting for judges when walletAddress is provided
+    if (roleFinal === 'judge' && walletAddress) {
       try {
         const tokenCheck = await checkTokenBalance(walletAddress);
-        if (!tokenCheck.hasTokens) {
+        if (!tokenCheck.hasTokens && !tokenCheck.dev_mode) {
           const config = getTokenConfig();
           return res.status(403).json({
-            error: 'Insufficient token balance',
+            error: 'Insufficient token balance to vote',
             yourBalance: tokenCheck.balance,
             required: tokenCheck.required,
-            tokenContract: config.tokenAddress,
-            chain: 'Base',
-            message: `You need ${tokenCheck.required} tokens to vote as a spectator`,
-            buyTokens: 'https://clanker.world/clanker/0xCf1F906e789c483DcB2f5161C502349775b2cb07'
+            tokenContract: config.tokenAddress
           });
         }
       } catch (verifyError) {
         console.error('Token verification error:', verifyError);
-        // Continue registration if in dev mode
       }
     }
 
-    const agent = store.registerAgent({ agentId, name, skillsUrl, endpoint, role, walletAddress });
+    const agent = store.registerAgent({ agentId, name, skillsUrl, endpoint, role: roleFinal, walletAddress });
 
     res.status(201).json({
       message: 'Agent registered successfully',
