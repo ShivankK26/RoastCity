@@ -114,7 +114,7 @@ export default function Landing({ onEnter }) {
                 <div className={styles.previewItem}>🤖 AI Diss Track Lab</div>
                 <div className={styles.previewItem}>+ 7 more arenas</div>
               </div>
-              <button onClick={onEnter} className={styles.toggleButton} style={{ width: '100%', justifyContent: 'center', background: 'var(--accent-cta)', color: 'white', marginTop: '1rem', border: 'none' }}>
+              <button onClick={onEnter} className={styles.toggleButton} style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #f97316, #ec4899)', color: 'white', marginTop: '1rem', border: 'none' }}>
                 👁️ Enter RoastCity
               </button>
             </div>

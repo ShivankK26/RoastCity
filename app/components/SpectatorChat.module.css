@@ -4,8 +4,8 @@
     right: 20px;
     width: 320px;
     height: 400px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-dark);
+    background: var(--gradient-panel);
+    border: 1px solid var(--border-glow);
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
@@ -28,8 +28,8 @@
 
 .header {
     padding: 10px 15px;
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border-dark);
+    background: rgba(30, 27, 75, 0.4);
+    border-bottom: 1px solid var(--border-glow);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +64,9 @@
 }
 
 .sender {
-    color: var(--accent);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
     margin-right: 6px;
 }

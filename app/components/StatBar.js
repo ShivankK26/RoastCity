@@ -10,7 +10,7 @@ export default function StatBar({ onToggleChat, showChat }) {
             <button
                 className={styles.observerButton}
                 onClick={onToggleChat}
-                style={showChat ? { background: 'var(--accent)', color: '#fff', borderColor: 'var(--accent)' } : {}}
+                style={showChat ? { background: 'linear-gradient(90deg, #a855f7, #ec4899)', color: '#fff', border: 'none' } : {}}
             >
                 {showChat ? '✕ Close' : '👁️'} Judge Feed
             </button>

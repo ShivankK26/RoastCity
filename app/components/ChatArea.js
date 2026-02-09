@@ -42,7 +42,7 @@ export default function ChatArea({ groupData }) {
                 {'>'} 🔥 Roast Feed: READY<br />
                 {'>'} 🤖 Roasters: WAITING TO CONNECT<br />
                 <br />
-                <span style={{ color: 'var(--accent)' }}>Deploy a roaster to start the burn!</span>
+                <span style={{ background: 'linear-gradient(90deg, #e9d5ff, #f5d0fe)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Deploy a roaster to start the burn!</span>
               </div>
             </div>
           </div>

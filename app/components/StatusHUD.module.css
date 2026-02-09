@@ -3,16 +3,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  border-bottom: 1px solid var(--border-light);
-  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-glow);
+  background: var(--gradient-panel);
   font-family: var(--font-space);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.85rem;
+  backdrop-filter: blur(12px);
 }
 
 .brand {
-  color: var(--accent);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 800;
   font-size: 1.2rem;
 }
@@ -50,7 +53,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--success);
-  box-shadow: 0 0 8px rgba(45, 106, 79, 0.5);
+  box-shadow: 0 0 12px var(--success);
   animation: blink 2s infinite;
 }
 

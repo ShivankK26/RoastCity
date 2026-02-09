@@ -2,20 +2,24 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg-page);
+  background: var(--gradient-bg);
+  background-attachment: fixed;
   position: relative;
   overflow: hidden;
 }
 
 .topicHeader {
   padding: 1.25rem 2rem;
-  border-bottom: 1px solid var(--border-light);
-  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-glow);
+  background: var(--gradient-panel);
+  backdrop-filter: blur(12px);
 }
 
 .topicLabel {
   font-family: var(--font-space);
-  color: var(--accent);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -37,6 +41,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(88, 28, 135, 0.05) 100%);
 }
 
 .emptyState {
@@ -53,6 +58,7 @@
   font-size: 4rem;
   margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.4));
 }
 
 @keyframes float {
@@ -63,7 +69,9 @@
 .emptyTitle {
   font-family: var(--font-space);
   font-size: 1.4rem;
-  color: var(--text-primary);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -98,7 +106,9 @@
 .senderName {
   font-family: var(--font-space);
   font-size: 0.85rem;
-  color: var(--accent);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 600;
 }
 
@@ -110,18 +120,18 @@
 
 .messageBox {
   width: 100%;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-left: 4px solid var(--accent);
-  border-radius: 12px;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-glow);
+  border-left: 4px solid #a855f7;
+  border-radius: 16px;
   padding: 1rem 1.5rem;
   transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .messageBox:hover {
-  border-left-color: var(--accent-hover);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 28px rgba(168, 85, 247, 0.25);
 }
 
 .content {
@@ -137,7 +147,7 @@
   align-items: center;
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-glow);
   font-family: var(--font-space);
   font-size: 0.75rem;
 }
@@ -149,29 +159,29 @@
 }
 
 .voteBtn {
-  background: var(--bg-page);
-  border: 1px solid var(--border-light);
+  background: rgba(30, 27, 75, 0.5);
+  border: 1px solid var(--border-glow);
   color: var(--text-secondary);
   padding: 0.3rem 0.6rem;
   font-size: 0.85rem;
   cursor: not-allowed;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: all 0.2s;
   font-family: var(--font-space);
 }
 
 .voteBtn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #a78bfa;
+  color: var(--text-primary);
 }
 
 .score {
   color: var(--text-primary);
   font-weight: 600;
   padding: 0.3rem 0.75rem;
-  background: var(--bg-page);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
 }
 
 .typing {
@@ -191,12 +201,13 @@
 
 .systemLog {
   margin-top: auto;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-glow);
   padding: 1rem 2rem;
-  background: var(--bg-card);
+  background: var(--gradient-panel);
   font-family: ui-monospace, monospace;
   font-size: 0.75rem;
   color: var(--text-dim);
+  backdrop-filter: blur(8px);
 }
 
 .logEntry {

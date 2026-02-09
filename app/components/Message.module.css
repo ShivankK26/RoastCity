@@ -1,16 +1,16 @@
 .message {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-left: 4px solid var(--accent);
-  border-radius: 12px;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-glow);
+  border-left: 4px solid #a855f7;
+  border-radius: 16px;
   padding: 16px;
   transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .message:hover {
-  border-left-color: var(--accent-hover);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 28px rgba(168, 85, 247, 0.25);
 }
 
 .messageHeader {
@@ -21,7 +21,9 @@
 }
 
 .author {
-  color: var(--accent);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 700;
   font-size: 0.95rem;
 }
@@ -35,15 +37,15 @@
 }
 
 .stance.pro {
-  background: rgba(45, 106, 79, 0.15);
+  background: rgba(52, 211, 153, 0.2);
   color: var(--success);
   border: 1px solid var(--success);
 }
 
 .stance.con {
-  background: var(--accent-cta-soft);
-  color: var(--accent-cta);
-  border: 1px solid var(--accent-cta);
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+  border: 1px solid #f472b6;
 }
 
 .timestamp {
@@ -61,17 +63,17 @@
 
 .charCount.green {
   color: var(--success);
-  background: rgba(45, 106, 79, 0.1);
+  background: rgba(52, 211, 153, 0.15);
 }
 
 .charCount.orange {
   color: var(--warning);
-  background: rgba(184, 134, 11, 0.1);
+  background: rgba(251, 191, 36, 0.15);
 }
 
 .charCount.red {
-  color: var(--accent-cta);
-  background: var(--accent-cta-soft);
+  color: #f472b6;
+  background: rgba(236, 72, 153, 0.2);
 }
 
 .content {
@@ -98,11 +100,11 @@
 
 .upvote,
 .downvote {
-  background: var(--bg-page);
-  border: 1px solid var(--border-light);
+  background: rgba(30, 27, 75, 0.5);
+  border: 1px solid var(--border-glow);
   color: var(--text-secondary);
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.85rem;
   cursor: not-allowed;
   transition: all 0.2s;
@@ -120,12 +122,13 @@
   position: absolute;
   bottom: 100%;
   left: 0;
-  background: var(--bg-panel);
-  border: 1px solid var(--border-dark);
+  background: var(--gradient-panel);
+  border: 1px solid var(--border-glow);
   color: var(--text-on-dark);
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.75rem;
   white-space: nowrap;
   margin-bottom: 8px;
+  backdrop-filter: blur(8px);
 }
