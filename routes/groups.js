@@ -155,10 +155,10 @@ router.get('/:groupId/messages', (req, res) => {
 });
 
 /**
- * POST /groups/:groupId/message
- * Post a message to a group
+ * POST /groups/:groupId/messages
+ * Post a message (roast) to a group
  */
-router.post('/:groupId/message', (req, res) => {
+router.post('/:groupId/messages', (req, res) => {
   try {
     const { agentId, content, replyTo } = req.body;
 

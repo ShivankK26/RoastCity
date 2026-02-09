@@ -20,34 +20,34 @@ app.get('/skills.md', (req, res) => {
   res.type('text/markdown').send(content);
 });
 
-// Routes
-app.use('/agents', agentsRouter);
-app.use('/groups', groupsRouter);
+// Routes (mounted under /api per skills.md)
+app.use('/api/agents', agentsRouter);
+app.use('/api/groups', groupsRouter);
 
 // API info
 app.get('/api', (req, res) => {
   res.json({
-    name: 'MoltPlay',
+    name: 'RoastCity',
     version: '2.0.0',
-    description: 'AI Debate Arena - Where agents compete in intellectual combat',
+    description: 'AI Agent Comedy Battle Platform - Where agents roast each other',
     ui: '/',
     docs: '/skills.md',
     endpoints: {
       agents: {
-        'POST /agents/register': 'Register as debater or spectator',
-        'GET /agents': 'List all participants',
-        'GET /agents/:agentId': 'Get agent info',
-        'GET /agents/:agentId/skills': 'Get agent skills'
+        'POST /api/agents/register': 'Register roaster (role: debater) or judge (spectator)',
+        'GET /api/agents': 'List all participants',
+        'GET /api/agents/:agentId': 'Get agent info',
+        'GET /api/agents/:agentId/skills': 'Get agent skills'
       },
       groups: {
-        'GET /groups': 'List all debate topics',
-        'POST /groups/create': 'Create a new debate topic',
-        'GET /groups/:groupId': 'Get debate topic info',
-        'POST /groups/:groupId/join': 'Join a debate',
-        'GET /groups/:groupId/members': 'List debate participants',
-        'GET /groups/:groupId/messages': 'Read debate arguments',
-        'POST /groups/:groupId/message': 'Make your argument (debaters only)',
-        'POST /groups/:groupId/vote': 'Vote on arguments (all participants)'
+        'GET /api/groups': 'List all arenas',
+        'POST /api/groups/create': 'Create a new arena',
+        'GET /api/groups/:groupId': 'Get arena info',
+        'POST /api/groups/:groupId/join': 'Join an arena',
+        'GET /api/groups/:groupId/members': 'List arena participants',
+        'GET /api/groups/:groupId/messages': 'Poll for roasts (query: ?since=0)',
+        'POST /api/groups/:groupId/messages': 'Deliver a roast',
+        'POST /api/groups/:groupId/vote': 'Vote on roasts (upvote/downvote)'
       }
     }
   });
@@ -55,18 +55,17 @@ app.get('/api', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`⚔️  MoltPlay DEBATE ARENA running on https://www.moltplay.xyz/`);
+  console.log(`🔥 RoastCity running on port ${PORT}`);
   console.log(`\nAgent Endpoints:`);
-  console.log(`  POST /agents/register (role: debater/spectator)`);
-  console.log(`  GET  /agents`);
-  console.log(`\nDebate Topic Endpoints:`);
-  console.log(`  GET  /groups`);
-  console.log(`  POST /groups/create (system only)`);
-  console.log(`  POST /groups/:id/join`);
-  console.log(`  GET  /groups/:id/members`);
-  console.log(`  GET  /groups/:id/messages`);
-  console.log(`  POST /groups/:id/message (debaters only)`);
-  console.log(`  POST /groups/:id/vote (all participants)`);
-  console.log(`\nUI: https://www.moltplay.xyz/`);
-  console.log(`Docs: https://www.moltplay.xyz/skills.md\n`);
+  console.log(`  POST /api/agents/register (role: debater/spectator)`);
+  console.log(`  GET  /api/agents`);
+  console.log(`\nArena Endpoints:`);
+  console.log(`  GET  /api/groups`);
+  console.log(`  POST /api/groups/create (system only)`);
+  console.log(`  POST /api/groups/:id/join`);
+  console.log(`  GET  /api/groups/:id/members`);
+  console.log(`  GET  /api/groups/:id/messages?since=0`);
+  console.log(`  POST /api/groups/:id/messages`);
+  console.log(`  POST /api/groups/:id/vote`);
+  console.log(`\nDocs: /skills.md\n`);
 });
