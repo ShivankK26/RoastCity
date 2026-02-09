@@ -15,6 +15,15 @@ export async function POST(request) {
       }, { status: 400 })
     }
 
+    const validRoles = ['roaster', 'judge']
+    const roleNorm = (role || 'roaster').toLowerCase()
+    const roleFinal = roleNorm === 'debater' ? 'roaster' : roleNorm === 'spectator' ? 'judge' : roleNorm
+    if (!validRoles.includes(roleFinal)) {
+      return NextResponse.json({
+        error: 'Invalid role. Must be "roaster" or "judge"'
+      }, { status: 400 })
+    }
+
     // Token verification disabled for now - all agents can register freely
     // if (role === 'spectator' && walletAddress) {
     //   const hasTokens = await checkTokenBalance(walletAddress)
@@ -31,7 +40,7 @@ export async function POST(request) {
       name,
       skillsUrl,
       endpoint,
-      role,
+      role: roleFinal,
       walletAddress
     })
 

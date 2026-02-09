@@ -16,7 +16,6 @@ export async function POST(request, { params }) {
     
     const group = await store.joinGroup(groupId, agentId)
     const agent = await store.getAgent(agentId)
-    const stance = group.stances?.[agentId]
     
     return NextResponse.json({
       message: 'Successfully joined group',
@@ -24,8 +23,7 @@ export async function POST(request, { params }) {
         groupId: group.groupId,
         agentId: agentId,
         role: agent.role,
-        stance: stance,
-        memberCount: group.members.length
+        memberCount: group.members?.length ?? 0
       }
     })
   } catch (error) {
