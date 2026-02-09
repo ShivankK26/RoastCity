@@ -1,0 +1,424 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+/* Background Effects - City Theme */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#6366f1 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.15;
+  animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 50px 50px;
+  }
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.title {
+  font-family: var(--font-space);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFFFFF 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.3));
+}
+
+.subtitle {
+  font-family: var(--font-space);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.cityIcon {
+  color: var(--accent-indigo);
+  margin-bottom: 0.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.cityIcon svg {
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  max-width: 450px;
+  width: 100%;
+}
+
+.statCard {
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--accent-indigo);
+  transform: translateY(-2px);
+}
+
+.statCard svg {
+  color: var(--accent-indigo);
+  margin-bottom: 0.25rem;
+  width: 20px;
+  height: 20px;
+}
+
+.statValue {
+  font-family: var(--font-space);
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 0.15rem 0;
+}
+
+.statLabel {
+  font-family: var(--font-inter);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.districtPreview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.previewItem {
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Toggle Tabs */
+.toggleContainer {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggleButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  color: #888;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggleButton.active {
+  background: #6366f1;
+  color: #fff;
+  border-color: #6366f1;
+}
+
+/* Onboarding Card */
+.card {
+  background: #0a0a0a;
+  border: 1px solid #6366f1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+  text-align: left;
+}
+
+.cardTitle {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-family: var(--font-space);
+}
+
+.cardTitle span {
+  color: #6366f1;
+}
+
+.tabSwitch {
+  display: flex;
+  background: #111;
+  padding: 3px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.tabOption {
+  flex: 1;
+  text-align: center;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.tabOption.active {
+  background: #6366f1;
+  color: white;
+  font-weight: bold;
+}
+
+.codeBlock {
+  background: #111;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #0f0;
+  /* Terminal green text */
+  margin-bottom: 1rem;
+  border: 1px solid #222;
+  overflow-x: auto;
+  word-break: break-all;
+}
+
+.stepList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stepItem {
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.stepNumber {
+  color: #6366f1;
+  font-weight: bold;
+  margin-right: 6px;
+  font-size: 0.85rem;
+}
+
+/* Footer Actions */
+.launchedText {
+  color: #ff3333;
+  font-family: var(--font-space);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Button Group */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.buyButton {
+  background: #fff;
+  color: #000;
+  font-family: var(--font-space);
+  font-weight: 800;
+  padding: 0.75rem 2rem;
+  border-radius: 2px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  min-width: 160px;
+}
+
+.buyButton:hover {
+  background: #eee;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.enterButton {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  font-family: var(--font-space);
+  font-weight: 800;
+  padding: 0.65rem 1.75rem;
+  border-radius: 2px;
+  border: 1px solid #6366f1;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s;
+  min-width: 140px;
+  font-size: 0.85rem;
+}
+
+.enterButton:hover {
+  background: #6366f1;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Ticker / Stat Strip */
+.ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.9);
+  border-top: 1px solid var(--border-color);
+  padding: 0.6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.tickerContent {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+  padding-left: 100%;
+}
+
+.statItem {
+  display: inline-block;
+  margin-right: 2.5rem;
+  color: #888;
+  font-family: var(--font-space);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.statValue {
+  color: #6366f1;
+  font-weight: bold;
+  margin-left: 0.4rem;
+  font-size: 0.75rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-height: 800px) {
+  .content {
+    padding: 1rem 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cityIcon svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .statsGrid {
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .statCard {
+    padding: 0.5rem;
+  }
+  
+  .statValue {
+    font-size: 1.1rem;
+  }
+  
+  .card {
+    padding: 1.25rem;
+  }
+  
+  .toggleContainer {
+    margin-bottom: 1rem;
+  }
+}

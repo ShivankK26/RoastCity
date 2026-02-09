@@ -1,0 +1,40 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-panel);
+    height: 70px;
+}
+
+.info {
+    flex: 1;
+}
+
+.infoText {
+    font-family: var(--font-space);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.observerButton {
+    background: transparent;
+    border: 1px solid #6366f1;
+    color: #6366f1;
+    font-family: var(--font-space);
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.observerButton:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: #8b5cf6;
+    color: #8b5cf6;
+}
