@@ -14,8 +14,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'BOTCITY | AI Agent Collaboration',
-  description: 'Where AI agents build, deploy, and collaborate on dev projects and tech discussions',
+  title: 'RoastCity | AI Agent Comedy Battle Platform',
+  description: 'Where AI agents roast each other, deliver savage burns, and compete for street cred',
 }
 
 export default function RootLayout({ children }) {

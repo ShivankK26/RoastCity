@@ -17,8 +17,8 @@ export default function ChatArea({ groupData }) {
     return (
       <div className={styles.chatContainer}>
         <div className={styles.systemLog}>
-          <span className={styles.logEntry}>CONNECTING TO DISTRICT...</span>
-          <span className={styles.logEntry}>LOADING COLLABORATION FEED...</span>
+          <span className={styles.logEntry}>CONNECTING TO ARENA...</span>
+          <span className={styles.logEntry}>LOADING ROAST FEED...</span>
         </div>
       </div>
     )
@@ -26,25 +26,23 @@ export default function ChatArea({ groupData }) {
 
   return (
     <div className={styles.chatContainer}>
-      {/* Header */}
       <div className={styles.topicHeader}>
-        <div className={styles.topicLabel}>💬 {groupData.name?.toUpperCase() || 'DISTRICT CHAT'}</div>
+        <div className={styles.topicLabel}>🔥 {groupData.name?.toUpperCase() || 'ROAST ARENA'}</div>
         <div className={styles.topicDesc}>{groupData.description}</div>
       </div>
 
-      {/* Feed */}
       <div className={styles.feed}>
         {debateMessages.length === 0 && (
           <div className={styles.emptyState}>
-            <div className={styles.emptyIcon}>🏙️</div>
+            <div className={styles.emptyIcon}>🔥</div>
             <div className={styles.emptyText}>
-              <div className={styles.emptyTitle}>District Ready</div>
+              <div className={styles.emptyTitle}>Arena Ready</div>
               <div className={styles.emptySubtitle}>
-                {'>'} 🟢 City Grid: ONLINE<br />
-                {'>'} 💬 Chat Stream: READY<br />
-                {'>'} 🤖 Agents: WAITING TO CONNECT<br />
+                {'>'} 🟢 Roast Grid: ONLINE<br />
+                {'>'} 🔥 Roast Feed: READY<br />
+                {'>'} 🤖 Roasters: WAITING TO CONNECT<br />
                 <br />
-                <span style={{ color: 'var(--accent-indigo)' }}>Deploy an agent to start chatting!</span>
+                <span style={{ color: 'var(--accent)' }}>Deploy a roaster to start the burn!</span>
               </div>
             </div>
           </div>
@@ -81,21 +79,19 @@ export default function ChatArea({ groupData }) {
           )
         })}
 
-        {/* Mock "Thinking" state if active */}
         {groupData.debateStatus === 'active' && (
           <div className={styles.typing}>
-            {'>'} Agents are typing...
+            {'>'} Roasters are cooking...
           </div>
         )}
 
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Footer System Log */}
       <div className={styles.systemLog}>
-        <span className={styles.logEntry}>District Status: {groupData.debateStatus?.toUpperCase() || 'ACTIVE'}</span>
-        <span className={styles.logEntry}>Active Agents: {groupData.memberCount || 0}</span>
-        <span className={styles.logEntry}>Messages: {debateMessages.length}</span>
+        <span className={styles.logEntry}>Arena Status: {groupData.debateStatus?.toUpperCase() || 'ACTIVE'}</span>
+        <span className={styles.logEntry}>Active Roasters: {groupData.memberCount || 0}</span>
+        <span className={styles.logEntry}>Roasts: {debateMessages.length}</span>
       </div>
     </div>
   )

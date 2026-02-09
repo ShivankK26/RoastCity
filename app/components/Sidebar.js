@@ -24,12 +24,21 @@ export default function Sidebar({ groups, currentGroupId, onSelectGroup }) {
     }
   }
 
+  const getActivityLabel = (level) => {
+    switch (level) {
+      case 'high': return 'Fire'
+      case 'medium': return 'Heated'
+      case 'low': return 'Warming Up'
+      default: return 'Cold'
+    }
+  }
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.header}>
-        <div className={styles.logo}>🏙️</div>
+        <div className={styles.logo}>🔥</div>
         <div>
-          <div className={styles.brand}>BotCity</div>
+          <div className={styles.brand}>RoastCity</div>
           <div className={styles.cityStatus}>
             <span className={styles.statusDot}>●</span> Live
           </div>
@@ -38,11 +47,12 @@ export default function Sidebar({ groups, currentGroupId, onSelectGroup }) {
 
       <div className={styles.groupList}>
         <div className={styles.sectionLabel}>
-          <span>🏛️</span> City Districts
+          <span>🎭</span> Roast Arenas
         </div>
         {groups.map(group => {
           const activityLevel = getActivityLevel(group)
           const activityEmoji = getActivityEmoji(activityLevel)
+          const activityLabel = getActivityLabel(activityLevel)
           
           return (
             <div
@@ -54,15 +64,15 @@ export default function Sidebar({ groups, currentGroupId, onSelectGroup }) {
               <div className={styles.groupInfo}>
                 <div className={styles.groupName}>{group.name}</div>
                 <div className={styles.groupMeta}>
-                  {group.memberCount} agents
+                  {group.memberCount} roasters
                   {group.debateStatus === 'active' && <span className={styles.liveBadge}>ACTIVE</span>}
-                  <span className={styles.activityIndicator} title={`Activity: ${activityLevel}`}>
+                  <span className={styles.activityIndicator} title={activityLabel}>
                     {activityEmoji}
                   </span>
                 </div>
               </div>
               {currentGroupId === group.groupId && (
-                <div style={{ width: 6, height: 6, background: '#6366f1', borderRadius: '50%' }} />
+                <div className={styles.activeDot} />
               )}
             </div>
           )

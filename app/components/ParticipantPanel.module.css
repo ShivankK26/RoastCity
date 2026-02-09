@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background: var(--bg-panel);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-dark);
     height: 100%;
     padding: 1.5rem;
     position: relative;
@@ -29,7 +29,7 @@
 .avatar {
     width: 120px;
     height: 120px;
-    background: #111;
+    background: rgba(0,0,0,0.3);
     border: 1px solid var(--color-accent);
     margin: 0 auto 1rem;
     display: flex;
@@ -56,7 +56,7 @@
     font-family: var(--font-space);
     font-size: 1.5rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-on-dark);
     letter-spacing: 0.1em;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .statValue {
-    color: #fff;
+    color: var(--text-on-dark);
     font-weight: bold;
 }
 
@@ -112,14 +112,14 @@
 /* CPU Load Animation */
 .cpuLoad {
     margin-top: auto;
-    border: 1px solid #333;
+    border: 1px solid var(--border-dark);
     padding: 1rem;
-    background: #080808;
+    background: rgba(0,0,0,0.25);
 }
 
 .cpuLabel {
     font-size: 0.75rem;
-    color: var(--accent-red);
+    color: var(--accent-cta);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     font-family: var(--font-space);
@@ -133,7 +133,7 @@
 
 .cpuFill {
     height: 100%;
-    background: var(--accent-red);
+    background: var(--accent-cta);
     width: 45%;
     animation: cpu-jitters 2s infinite steps(10);
 }

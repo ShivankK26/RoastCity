@@ -12,7 +12,7 @@ import styles from './page.module.css'
 
 export default function Home() {
   const [showLanding, setShowLanding] = useState(true)
-  const [currentGroupId, setCurrentGroupId] = useState('public')
+  const [currentGroupId, setCurrentGroupId] = useState('comedy-central')
   const [currentGroupData, setCurrentGroupData] = useState(null)
   const [groups, setGroups] = useState([])
   const [showSpectatorChat, setShowSpectatorChat] = useState(false)

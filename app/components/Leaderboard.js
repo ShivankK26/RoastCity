@@ -42,8 +42,8 @@ export default function Leaderboard() {
     return (
       <div className={styles.leaderboard}>
         <div className={styles.header}>
-          <span className={styles.icon}>🏆</span>
-          <h3 className={styles.title}>Top Builders</h3>
+          <span className={styles.icon}>🔥</span>
+          <h3 className={styles.title}>Street Cred</h3>
         </div>
         <div className={styles.loading}>Loading...</div>
       </div>
@@ -54,10 +54,10 @@ export default function Leaderboard() {
     return (
       <div className={styles.leaderboard}>
         <div className={styles.header}>
-          <span className={styles.icon}>🏆</span>
-          <h3 className={styles.title}>Top Builders</h3>
+          <span className={styles.icon}>🔥</span>
+          <h3 className={styles.title}>Street Cred</h3>
         </div>
-        <div className={styles.empty}>No agents yet. Be the first!</div>
+        <div className={styles.empty}>No roasters yet. Be the first to throw shade!</div>
       </div>
     )
   }
@@ -65,8 +65,8 @@ export default function Leaderboard() {
   return (
     <div className={styles.leaderboard}>
       <div className={styles.header}>
-        <span className={styles.icon}>🏆</span>
-        <h3 className={styles.title}>Top Builders</h3>
+        <span className={styles.icon}>🔥</span>
+        <h3 className={styles.title}>Street Cred</h3>
       </div>
       <div className={styles.list}>
         {leaderboard.map((agent, index) => (
@@ -75,8 +75,8 @@ export default function Leaderboard() {
             <div className={styles.info}>
               <div className={styles.name}>{agent.name}</div>
               <div className={styles.stats}>
-                <span className={styles.rep}>{agent.reputation} rep</span>
-                <span className={styles.messages}>{agent.totalMessages} msgs</span>
+                <span className={styles.rep}>{agent.reputation} cred</span>
+                <span className={styles.messages}>{agent.totalMessages} roasts</span>
               </div>
             </div>
             <div className={styles.badges}>

@@ -1,7 +1,7 @@
 .sidebar {
-  width: 250px;
+  width: 260px;
   background: var(--bg-panel);
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-dark);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -9,11 +9,11 @@
 
 .header {
   padding: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-dark);
   display: flex;
   align-items: center;
   gap: 12px;
-  background: var(--bg-dark);
+  background: var(--bg-panel);
 }
 
 .logo {
@@ -23,15 +23,15 @@
 .brand {
   font-family: var(--font-space);
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text-on-dark);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .cityStatus {
   font-family: var(--font-inter);
   font-size: 0.65rem;
-  color: var(--text-secondary);
+  color: var(--text-dim);
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -39,18 +39,14 @@
 }
 
 .statusDot {
-  color: #10b981;
+  color: var(--success);
   font-size: 0.5rem;
   animation: pulse-green 2s ease-in-out infinite;
 }
 
 @keyframes pulse-green {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .groupList {
@@ -64,9 +60,9 @@
   font-family: var(--font-space);
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
-  padding-left: 0.5rem;
+  padding-left: 0.25rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -80,26 +76,34 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   border: 1px solid transparent;
 }
 
 .groupItem:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-dark);
 }
 
 .groupItem.active {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: #6366f1;
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 .groupItem.active .groupName {
-  color: #fff;
+  color: var(--text-on-dark);
+}
+
+.activeDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .groupIcon {
@@ -114,7 +118,7 @@
 }
 
 .groupName {
-  color: var(--text-secondary);
+  color: var(--text-on-dark);
   font-family: var(--font-inter);
   font-size: 0.85rem;
   font-weight: 500;
@@ -123,10 +127,9 @@
   text-overflow: ellipsis;
 }
 
-/* Bold category names when debate is active/live */
 .groupItem:has(.liveBadge) .groupName {
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-on-dark);
 }
 
 .groupMeta {
@@ -144,32 +147,27 @@
 }
 
 .groupItem.high {
-  border-left: 2px solid #ef4444;
+  border-left: 3px solid var(--accent-cta);
 }
 
 .groupItem.medium {
-  border-left: 2px solid #f59e0b;
+  border-left: 3px solid var(--warning);
 }
 
 .groupItem.low {
-  border-left: 2px solid #10b981;
+  border-left: 3px solid var(--success);
 }
 
 .liveBadge {
-  background: #10b981;
+  background: var(--success);
   color: #fff;
   font-size: 0.6rem;
-  padding: 1px 4px;
-  border-radius: 2px;
+  padding: 2px 5px;
+  border-radius: 4px;
   font-weight: bold;
-  animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }

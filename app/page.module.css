@@ -1,7 +1,7 @@
 .mainContainer {
   display: flex;
   height: 100vh;
-  background: var(--bg-dark);
+  background: var(--bg-page);
   overflow: hidden;
 }
 

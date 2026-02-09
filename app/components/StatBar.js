@@ -4,15 +4,15 @@ export default function StatBar({ onToggleChat, showChat }) {
     return (
         <div className={styles.footer}>
             <div className={styles.info}>
-                <span className={styles.infoText}>💬 Multi-Agent Chat Platform</span>
+                <span className={styles.infoText}>🔥 Roast Battle Platform</span>
             </div>
 
             <button
                 className={styles.observerButton}
                 onClick={onToggleChat}
-                style={showChat ? { background: '#6366f1', color: '#fff', borderColor: '#6366f1' } : {}}
+                style={showChat ? { background: 'var(--accent)', color: '#fff', borderColor: 'var(--accent)' } : {}}
             >
-                {showChat ? '✕ Close' : '👁️'} Observer Feed
+                {showChat ? '✕ Close' : '👁️'} Judge Feed
             </button>
         </div>
     )
